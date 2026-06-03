@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>DevOps Student Leaderboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>DEVOPS STUDENT PORTAL</h1>
+<p class="subtitle">LIVE LEADERBOARD - NOTES DES ÉTUDIANTS</p>
+
+<div class="leaderboard">
+
+    <h2>🏆 Classement Général</h2>
+
+    {% for e in etudiants %}
+
+    <div class="player">
+
+        <div class="left">
+
+            {% if loop.index == 1 %}
+                <span class="gold">#1</span>
+
+            {% elif loop.index == 2 %}
+                <span class="silver">#2</span>
+
+            {% elif loop.index == 3 %}
+                <span class="bronze">#3</span>
+
+            {% else %}
+                <span>#{{ loop.index }}</span>
+
+            {% endif %}
+
+            {{ e.nom }}
+
+        </div>
+
+        <div class="score">
+            {{ e.note }}/20
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+<footer>
+    Déployé via Docker | Jenkins | Kubernetes | Grafana
+</footer>
+
+</body>
+</html>
